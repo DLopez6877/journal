@@ -18,6 +18,7 @@ $(document).ready(function(){
     }
     $("#output").append('<li>Number of consonants: ' +
         newEntry.numberOfConsonants() + '</li>');
-    });
 
+    $('#output').append('<li>Teaser: ' + newEntry.getTeaser() + '</li>');
+  });
 });

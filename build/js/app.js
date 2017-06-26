@@ -50,7 +50,21 @@ Entry.prototype.numberOfConsonants = function() {
 };
 
 Entry.prototype.getTeaser = function() {
-  return null;
+  //"hello, how are you today? i am fine. thanks for asking"
+  // var regex = /\b(?![\?\.\!])/;
+  var body = this.body.match(/\(?[^\.\?\!]+[\.!\?]\)?/g);
+
+  if (body[0].split(" ").length <= 8) {
+    return body[0];
+  } else {
+    var output = "";
+    body[0].split(" ").forEach(function(word, index) {
+      if (index <= 7) {
+        output += word + ' ';
+      }
+    });
+    return output;
+  }
 };
 
 exports.entry = Entry;
@@ -76,8 +90,9 @@ $(document).ready(function(){
     }
     $("#output").append('<li>Number of consonants: ' +
         newEntry.numberOfConsonants() + '</li>');
-    });
 
+    $('#output').append('<li>Teaser: ' + newEntry.getTeaser() + '</li>');
+  });
 });
 
 },{"./../js/Entry.js":1}]},{},[2]);

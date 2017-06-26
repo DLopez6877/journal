@@ -12,12 +12,15 @@ $(document).ready(function(){
 
     $("#output").append("<li>Number of words: " +
                          newEntry.numberOfWords() + "</li>");
+
     for (var key in numberOfVowels) {
       $('#output').append('<li>' + key + ': ' + numberOfVowels[key] +
                           '</li>');
     }
+
     $("#output").append('<li>Number of consonants: ' +
         newEntry.numberOfConsonants() + '</li>');
-    });
 
+    $('#output').append('<li>Teaser: ' + newEntry.getTeaser() + '</li>');
+  });
 });

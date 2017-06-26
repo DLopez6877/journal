@@ -36,7 +36,17 @@ Entry.prototype.numberOfVowels = function() {
 };
 
 Entry.prototype.numberOfConsonants = function() {
-  return null;
+  var str = this.body.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+  var vowels = ['a', 'e', 'i', 'o', 'u'];
+  var counter = 0;
+
+  str = str.toLowerCase().split("");
+  str.forEach(function(letter) {
+    if (!vowels.includes(letter) && letter !== " ") {
+      counter += 1;
+    }
+  });
+  return counter;
 };
 
 Entry.prototype.getTeaser = function() {
@@ -64,7 +74,9 @@ $(document).ready(function(){
       $('#output').append('<li>' + key + ': ' + numberOfVowels[key] +
                           '</li>');
     }
-  });
+    $("#output").append('<li>Number of consonants: ' +
+        newEntry.numberOfConsonants() + '</li>');
+    });
 
 });
 

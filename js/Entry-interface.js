@@ -16,6 +16,8 @@ $(document).ready(function(){
       $('#output').append('<li>' + key + ': ' + numberOfVowels[key] +
                           '</li>');
     }
-  });
+    $("#output").append('<li>Number of consonants: ' +
+        newEntry.numberOfConsonants() + '</li>');
+    });
 
 });
